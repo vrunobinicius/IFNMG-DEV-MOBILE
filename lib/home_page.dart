@@ -20,7 +20,7 @@ class HomePageState extends State<HomePage> {
           child: Text("Contador: $counter"),
           onTap: () {
             setState(() {
-              counter = counter + 1;
+              counter++;
             });
           },
         ),
