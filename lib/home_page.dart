@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:project/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,17 +13,47 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: GestureDetector(
-          child: Text("Contador: $counter"),
-          onTap: () {
-            setState(() {
-              counter++;
-            });
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("BARBIE APP"),
+        shadowColor: Colors.pink,
+        elevation: 35,
+        centerTitle: true,
+        foregroundColor: Colors.blue,
+        actions: [
+          IconButton(
+              onPressed: () {
+                AppController.instance.changeTheme();
+              },
+              icon: (AppController.instance.isDartTheme
+                  ? Icon(Icons.dark_mode_sharp)
+                  : Icon(Icons.dark_mode_outlined))),
+        ],
       ),
+      body: Center(
+        child: CustomSwitch(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            counter++;
+          });
+        },
+        child: Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomAppBar(color: Colors.pink),
+    );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: AppController.instance.isDartTheme,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+      },
     );
   }
 }
