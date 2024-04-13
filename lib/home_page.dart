@@ -28,7 +28,7 @@ class HomePageState extends State<HomePage> {
           DarkLightModeButton(),
         ],
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
