@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -48,8 +49,8 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
-                    if (_email == "bruninhogameplays" && _password == "123") {
-                      print("correto");
+                    if (_email == "123" && _password == "123") {
+                      Navigator.of(context).pushReplacementNamed("/home");
                     } else {
                       print("login inválido");
                     }
