@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:project/app_controller.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -18,19 +19,13 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BARBIE APP"),
+        title: const Text("BARBIE APP"),
         shadowColor: Colors.pink,
         elevation: 35,
         centerTitle: true,
         foregroundColor: Colors.blue,
-        actions: [
-          IconButton(
-              onPressed: () {
-                AppController.instance.changeTheme();
-              },
-              icon: (AppController.instance.isDartTheme
-                  ? Icon(Icons.dark_mode_sharp)
-                  : Icon(Icons.dark_mode_outlined))),
+        actions: const [
+          DarkLightModeButton(),
         ],
       ),
       body: Container(
@@ -39,7 +34,7 @@ class HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Contador",
               style: TextStyle(fontSize: 25),
             ),
@@ -61,7 +56,7 @@ class HomePageState extends State<HomePage> {
                   height: 50,
                   child: Text(
                     "$counter",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25,
                       color: Colors.white,
                     ),
@@ -78,13 +73,13 @@ class HomePageState extends State<HomePage> {
                 Container(
                   width: 50,
                   height: 50,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.pinkAccent,
                   ),
                 )
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -94,21 +89,24 @@ class HomePageState extends State<HomePage> {
             counter++;
           });
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: BottomAppBar(color: Colors.pink),
+      bottomNavigationBar: const BottomAppBar(color: Colors.pink),
     );
   }
 }
 
-class CustomSwitch extends StatelessWidget {
+class DarkLightModeButton extends StatelessWidget {
+  const DarkLightModeButton({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      value: AppController.instance.isDartTheme,
-      onChanged: (value) {
-        AppController.instance.changeTheme();
-      },
-    );
+    return IconButton(
+        onPressed: () {
+          AppController.instance.changeTheme();
+        },
+        icon: (AppController.instance.isDartTheme
+            ? const Icon(Icons.dark_mode_sharp)
+            : const Icon(Icons.dark_mode_outlined)));
   }
 }
