@@ -30,36 +30,53 @@ class _LoginPageState extends State<LoginPage> {
                   child: Image.asset('assets/images/barbie-logo.png'),
                 ),
               ),
-              TextField(
-                onChanged: (text) {
-                  _email = text;
-                },
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: "E-MAIL",
-                  border: OutlineInputBorder(),
+              Card(
+                shadowColor: Colors.pinkAccent,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        onChanged: (text) {
+                          _email = text;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          labelText: "E-MAIL",
+                          border: UnderlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextField(
+                        onChanged: (text) {
+                          _password = text;
+                        },
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: "PASSWORD",
+                          border: UnderlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.pinkAccent,
+                          foregroundColor: Colors.white,
+                          elevation: 10,
+                          shadowColor: Colors.pinkAccent,
+                        ),
+                        onPressed: () {
+                          if (_email == "123" && _password == "123") {
+                            Navigator.of(context).pushReplacementNamed("/home");
+                          } else {}
+                        },
+                        child: Text("ENTRAR"),
+                      )
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 10),
-              TextField(
-                onChanged: (text) {
-                  _password = text;
-                },
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "PASSWORD",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  if (_email == "123" && _password == "123") {
-                    Navigator.of(context).pushReplacementNamed("/home");
-                  } else {}
-                },
-                child: Text("ENTRAR"),
-              )
             ],
           ),
         ),

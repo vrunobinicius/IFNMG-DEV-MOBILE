@@ -18,6 +18,33 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: Image.network(
+                  "https://classic.exame.com/wp-content/uploads/2024/03/barbie-margot-robbie-barbie-368113.jpg?quality=70&strip=info&w=1024"),
+              accountName: Text("Barbie"),
+              accountEmail: Text("Barbie"),
+            ),
+            Container(height: 30),
+            ListTile(
+              title: Text("INÍCIO"),
+              subtitle: Text("Tela de Início"),
+              leading: Icon(Icons.home),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("SAIR"),
+              subtitle: Text("Sair do usúario"),
+              leading: Icon(Icons.logout_rounded),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed("/");
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Text("BARBIE APP"),
         shadowColor: Colors.pink,
