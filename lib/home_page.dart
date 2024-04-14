@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -22,12 +24,14 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: Image.network(
-                  "https://classic.exame.com/wp-content/uploads/2024/03/barbie-margot-robbie-barbie-368113.jpg?quality=70&strip=info&w=1024"),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.network(
+                    "https://rollingstone.uol.com.br/media/_versions/2023/05/barbie-filme-margot-robbie-2023-foto-divulgacao_widelg.jpg"),
+              ),
               accountName: Text("Barbie"),
               accountEmail: Text("Barbie"),
             ),
-            Container(height: 30),
             ListTile(
               title: Text("INÍCIO"),
               subtitle: Text("Tela de Início"),
@@ -37,7 +41,10 @@ class HomePageState extends State<HomePage> {
             ListTile(
               title: Text("SAIR"),
               subtitle: Text("Sair do usúario"),
-              leading: Icon(Icons.logout_rounded),
+              leading: Icon(
+                Icons.logout_rounded,
+                color: Colors.red,
+              ),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed("/");
               },
@@ -93,19 +100,6 @@ class HomePageState extends State<HomePage> {
             ),
             Container(
               height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.pinkAccent,
-                  ),
-                )
-              ],
             ),
           ],
         ),

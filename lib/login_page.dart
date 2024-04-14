@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:flutter/material.dart';
 
@@ -40,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextField(
                         onChanged: (text) {
                           _email = text;
+                          print(_email);
                         },
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -51,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextField(
                         onChanged: (text) {
                           _password = text;
+                          print(_password);
                         },
                         obscureText: true,
                         decoration: InputDecoration(
@@ -67,9 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                           shadowColor: Colors.pinkAccent,
                         ),
                         onPressed: () {
-                          if (_email == "123" && _password == "123") {
-                            Navigator.of(context).pushReplacementNamed("/home");
-                          } else {}
+                          Navigator.of(context).pushReplacementNamed("/home");
                         },
                         child: Text("ENTRAR"),
                       )
